@@ -4,6 +4,7 @@ import discord
 import asyncio
 from dotenv import load_dotenv
 
+
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
@@ -18,10 +19,9 @@ async def on_ready():
         f'{client.user} is connected to the following guild:\n'
         f'{guild.name}(id: {guild.id})'
     )
-@client.event
+@client.event   
 async def on_message(message):
-    
-    bad_words = ["fuck", "stop", "45"]
+    bad_words  = [ "fuck" , "motherfucker"]
     if message.content.find("!hello") != -1:
         await message.channel.send("Hi") # If the user says !hello we will send back hi 
     
@@ -30,7 +30,7 @@ async def on_message(message):
             print("A bad word was said")
             await message.channel.purge(limit=1)
 
-    if message.content == "!Help":
+    if message.content == "!help":
         embed = discord.Embed(title="Help on BOT", description="Some user commands")
         embed.add_field(name="!hello", value= "Greets the user")
         await message.channel.send(content=None, embed=embed)        
