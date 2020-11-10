@@ -26,7 +26,7 @@ async def on_ready():
 async def on_message(message):
     bad_words  = [ "fuck" , "motherfucker"]
     if message.content == "!hello":
-        await message.channel.send("Hi") # If the user says !hello we will send back hi 
+        await message.channel.send("Hi!, nice to meet you. ") # If the user says !hello we will send back hi 
     
     for word in bad_words:
         if message.content.count(word) > 0:
@@ -37,6 +37,7 @@ async def on_message(message):
         embed = discord.Embed(title="Help on BOT", description="Some user commands")
         embed.add_field(name="!hello", value= "Greets the user")
         embed.add_field(name="*search <topic>", value= "Shows top geeksgforgeeks results")
+        embed.add_field(name="!events", value= "Info about upcoming coding contests")
         await message.channel.send(content=None, embed=embed)  
 
     # events scraping
