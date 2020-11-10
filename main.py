@@ -23,7 +23,7 @@ async def on_ready():
 @client.event   
 async def on_message(message):
     bad_words  = [ "fuck" , "motherfucker"]
-    if message.content.find("!hello") != -1:
+    if message.content == "!hello":
         await message.channel.send("Hi") # If the user says !hello we will send back hi 
     
     for word in bad_words:
@@ -34,6 +34,7 @@ async def on_message(message):
     if message.content == "!help":
         embed = discord.Embed(title="Help on BOT", description="Some user commands")
         embed.add_field(name="!hello", value= "Greets the user")
+        embed.add_field(name="*search <topic>", value= "Shows top geeksgforgeeks results")
         await message.channel.send(content=None, embed=embed)  
 
     if message.content:
@@ -42,10 +43,14 @@ async def on_message(message):
         if(x[0] == "*search"):
             arg = x[1:]
             input_query=''.join(arg)
+            count = 1
             modified_query=input_query+" geeks for geeks"
+            embed = discord.Embed(title="Help on BOT", description="Some user commands")
             if len(input_query) > 0:
                 for j in search(modified_query, tld="co.in", num=7, stop=7, pause=1):
-                    await message.channel.send(j)
+                    embed.add_field(name=str(count)+").", value= j)
+                    count+=1
+                await message.channel.send(content=None, embed=embed)       
 
 
 @client.event
