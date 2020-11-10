@@ -4,8 +4,9 @@ import discord
 import asyncio
 from dotenv import load_dotenv
 from googlesearch import search
-import antispam
-
+import requests
+import html5lib
+from bs4 import BeautifulSoup
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -38,6 +39,44 @@ async def on_message(message):
         embed.add_field(name="*search <topic>", value= "Shows top geeksgforgeeks results")
         await message.channel.send(content=None, embed=embed)  
 
+    # events scraping
+    if message.content == "!events":
+        URL = "https://www.stopstalk.com/contests"
+
+        r = requests.get(URL)
+
+        if r.status_code == 200:
+            soup = BeautifulSoup(r.content, "html5lib")
+
+        table = soup.findAll('table',{"class":"centered bordered"})[0]
+        tr = table.findAll(['tr'])[1:]
+        info = []
+
+        for row in tr:
+            td = row.findAll('td')
+            row_info = {}
+            row_info['name'] = td[0].text
+            if bool(td[0].findAll('span')) == True:
+                row_info['status'] = 'live'
+            else:
+                row_info['status'] = 'upcom'
+            row_info['end-date'] = td[3].text
+    
+            link = td[4].find('a')
+            row_info['link'] = link.get('href')
+            info.append(row_info)
+
+        count=1
+        embed=discord.Embed(title="Events", discription="events details")
+        for i in info:
+            if count > 9:
+                break
+            details="status: "+i['status']+"\nend date: "+i['end-date']+"\nlink: "+i['link']
+            embed.add_field(name=i['name'],value=details)
+            count+=1
+        await message.channel.send(content=None, embed=embed)
+
+    # search logic
     if message.content:
         x = message.content.split()
         arg = ""
@@ -46,14 +85,13 @@ async def on_message(message):
             input_query=''.join(arg)
             count = 1
             modified_query=input_query+" geeks for geeks"
-            embed = discord.Embed(title="Help on BOT", description="Some user commands")
+            embed = discord.Embed(title="Geek Search", description=input_query)
             if len(input_query) > 0:
                 for j in search(modified_query, tld="co.in", num=7, stop=7, pause=1):
                     embed.add_field(name=str(count)+").", value= j)
                     count+=1
                 await message.channel.send(content=None, embed=embed) 
 
-                   
 
 
 @client.event
