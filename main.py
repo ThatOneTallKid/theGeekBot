@@ -33,7 +33,7 @@ async def on_message(message):
             print("A bad word was said")
             await message.channel.purge(limit=1)
 
-    if message.content == "!help":
+    if message.content == "--help":
         embed = discord.Embed(title="Help on BOT", description="Some user commands")
         embed.add_field(name="!hello", value= "Greets the user")
         embed.add_field(name="*search <topic>", value= "Shows top geeksgforgeeks results")
