@@ -3,6 +3,7 @@ import time
 import discord
 import asyncio
 from dotenv import load_dotenv
+from googlesearch import search
 
 
 load_dotenv()
@@ -33,7 +34,18 @@ async def on_message(message):
     if message.content == "!help":
         embed = discord.Embed(title="Help on BOT", description="Some user commands")
         embed.add_field(name="!hello", value= "Greets the user")
-        await message.channel.send(content=None, embed=embed)        
+        await message.channel.send(content=None, embed=embed)  
+
+    if message.content:
+        x = message.content.split()
+        arg = ""
+        if(x[0] == "*search"):
+            arg = x[1:]
+            input_query=''.join(arg)
+            modified_query=input_query+" geeks for geeks"
+            if len(input_query) > 0:
+                for j in search(modified_query, tld="co.in", num=7, stop=7, pause=1):
+                    await message.channel.send(j)
 
 
 @client.event
