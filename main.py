@@ -4,6 +4,7 @@ import discord
 import asyncio
 from dotenv import load_dotenv
 from googlesearch import search
+import antispam
 
 
 load_dotenv()
@@ -50,7 +51,9 @@ async def on_message(message):
                 for j in search(modified_query, tld="co.in", num=7, stop=7, pause=1):
                     embed.add_field(name=str(count)+").", value= j)
                     count+=1
-                await message.channel.send(content=None, embed=embed)       
+                await message.channel.send(content=None, embed=embed) 
+
+                   
 
 
 @client.event
