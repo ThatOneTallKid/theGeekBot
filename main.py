@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 from googlesearch import search
 import requests
 import html5lib
+import json
+from datetime import date
 from bs4 import BeautifulSoup
 
 load_dotenv()
@@ -28,6 +30,7 @@ async def on_message(message):
     if message.content == "!hello":
         await message.channel.send("Hi!, nice to meet you. ") # If the user says !hello we will send back hi 
     
+    #bad words remover
     for word in bad_words:
         if message.content.count(word) > 0:
             print("A bad word was said")
@@ -92,7 +95,48 @@ async def on_message(message):
                     embed.add_field(name=str(count)+").", value= j)
                     count+=1
                 await message.channel.send(content=None, embed=embed) 
+    
+    # task tracker feature for members:
+    if message.content:
+       processed_msg=message.content.split()
+       args=""
+       if(processed_msg[0]=="!tasks"):
+           #json template
+           #fetch pre-exiting task from file
+           with open('./tasks.json') as tasks:
+               task_list=json.load(tasks)
+           args = x[1:]
+           # just a workaround, will fix later
+           if len(args)==0: args=[""]
+           #check if 1st arg is `assign` or not
+           if (args[0]=="assign"):
+                #if already exists
+                if(args[1] in task_list):
+                    task_list[args[1]]['tasks'].append(" ".join(args[2:]))
+                else:
+                    task_list[args[1]]={}
+                    task_list[args[1]]['tasks']=[" ".join(args[2:])]
 
+                #save file
+                with open('./tasks.json','w') as tf:
+                    json.dump(task_list,tf)
+                embed=discord.Embed(title="New Task",description="details")
+                embed.add_field(name="Domain: ",value=args[1])
+                embed.add_field(name="Tasks: ",value=" ".join(args[2:]))
+                await message.channel.send(content=None,embed=embed)
+           else:
+               embed=discord.Embed(title="Tasks",description="list of tasks:-")
+               #print all the tasks from file
+               with open('./tasks.json') as tf:
+                   task_list=json.load(tf)
+               for domain in task_list:
+                   count=1
+                   for tasks in task_list[domain]['tasks']:
+                       embed.add_field(name="Domain ",value=domain)
+                       embed.add_field(name="Task "+str(count), value=tasks+"\n")
+                       count+=1
+                       embed.add_field(name = chr(173), value = chr(173))
+               await message.channel.send(content=None,embed=embed)
 
 
 @client.event
