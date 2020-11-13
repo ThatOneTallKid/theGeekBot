@@ -33,7 +33,6 @@ async def on_message(message):
     #bad words remover
     for word in bad_words:
         if message.content.count(word) > 0:
-            print("A bad word was said")
             await message.channel.purge(limit=1)
 
     if message.content == "!help":
@@ -123,6 +122,23 @@ async def on_message(message):
                 embed.add_field(name="Domain: ",value=args[1])
                 embed.add_field(name="Tasks: ",value=" ".join(args[2:]))
                 await message.channel.send(content=None,embed=embed)
+           if (args[0]=="delete"):
+                #get tasklist from file
+                with open('./tasks.json') as tf:
+                    task_list=json.load(tf)
+                if(args[1] in task_list):
+                    #args[2]: task number, args[1]: domain
+                    if int(args[2]) == 0:
+                        await message.channel.send("invalid task "+args[2])
+                        return
+                    toBeDeleted=task_list[args[1]]['tasks'][int(args[2])-1]
+                    task_list[args[1]]['tasks'].remove(toBeDeleted)
+                    #save changes to file
+                    with open('./tasks.json','w') as tf:
+                        json.dump(task_list,tf)
+                    await message.channel.send("task deleted successfully")
+                else:
+                    await message.channel.send("No tasks available for "+args[1])
            else:
                embed=discord.Embed(title="Tasks",description="list of tasks:-")
                #print all the tasks from file
