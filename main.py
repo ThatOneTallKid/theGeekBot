@@ -6,9 +6,10 @@ from dotenv import load_dotenv
 from googlesearch import search
 import requests
 import html5lib
-import json
 from datetime import date
 from bs4 import BeautifulSoup
+import json
+
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
