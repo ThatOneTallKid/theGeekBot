@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 import json
 
 
+
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
@@ -27,7 +28,7 @@ async def on_ready():
     )
 @client.event   
 async def on_message(message):
-    bad_words  = [ "fuck" , "motherfucker"]
+    bad_words  = [ "fuck" , "mf", "ass", "Ass", "FUCK", "bsdk", "madarchod", "bhenchd", "f_u_c_k", "vagina" , "penis", "breasts", "boobs","Boobs","mc" , "SALE"]
     if message.content == "!hello":
         await message.channel.send("Hi!, nice to meet you. ") # If the user says !hello we will send back hi 
     
