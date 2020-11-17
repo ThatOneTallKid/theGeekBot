@@ -8,7 +8,6 @@ import requests
 import html5lib
 from datetime import date
 from bs4 import BeautifulSoup
-
 import json
 
 
