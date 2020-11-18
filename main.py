@@ -28,7 +28,8 @@ async def on_ready():
     )
 @client.event   
 async def on_message(message):
-    bad_words  = [ "fuck" , "mf","ass ", "FUCK", "bsdk", "madarchod", "bhenchd", "f_u_c_k", "vagina","bhosdiwale" ,"Fuck","bsd","asshole", "penis", "breasts", "boobs","Boobs","mc" , "SALE"]
+    bad_words  = [ "fuck" , "mf","ass ", "FUCK", "bsdk", "madarchod", "bhenchd", "f_u_c_k", "vagina","bhosdiwale" ,"Fuck","bsd","asshole", "penis","lodu", "breasts", "boobs","Boobs","mc" , "SALE"]
+    valid_users = ["Aditya10#1960", "taran | KIIT #7416", "souvik#5891"]
     if message.content == "!hello":
         await message.channel.send("Hi!, nice to meet you. ") # If the user says !hello we will send back hi 
     
@@ -111,21 +112,24 @@ async def on_message(message):
            # just a workaround, will fix later
            if len(args)==0: args=[""]
            #check if 1st arg is `assign` or not
+           
            if (args[0]=="assign"):
                 #if already exists
-                if(args[1] in task_list):
-                    task_list[args[1]]['tasks'].append(" ".join(args[2:]))
-                else:
-                    task_list[args[1]]={}
-                    task_list[args[1]]['tasks']=[" ".join(args[2:])]
-
+               if str(message.author) in valid_users:
+                    if(args[1] in task_list):
+                        task_list[args[1]]['tasks'].append(" ".join(args[2:]))
+                    else:
+                        task_list[args[1]]={}
+                        task_list[args[1]]['tasks']=[" ".join(args[2:])]
                 #save file
-                with open('./tasks.json','w') as tf:
-                    json.dump(task_list,tf)
-                embed=discord.Embed(title="New Task",description="details")
-                embed.add_field(name="Domain: ",value=args[1])
-                embed.add_field(name="Tasks: ",value=" ".join(args[2:]))
-                await message.channel.send(content=None,embed=embed)
+                    with open('./tasks.json','w') as tf:
+                        json.dump(task_list,tf)
+                    embed=discord.Embed(title="New Task",description="details")
+                    embed.add_field(name="Domain: ",value=args[1])
+                    embed.add_field(name="Tasks: ",value=" ".join(args[2:]))
+
+                    
+                    await message.channel.send(content=None,embed=embed)
            if (args[0]=="delete"):
                 #get tasklist from file
                 with open('./tasks.json') as tf:
