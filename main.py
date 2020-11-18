@@ -14,7 +14,7 @@ load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 ID = os.getenv('DISCORD_ID')
-
+Task_file=os.getenv('TASK_FILE')
 client = discord.Client()
 
 @client.event
@@ -27,7 +27,7 @@ async def on_ready():
 @client.event   
 async def on_message(message):
     bad_words  = [ "fuck" , "motherfucker"]
-    if message.content == "!hello":
+    if message.content == "~hello":
         await message.channel.send("Hi") # If the user says !hello we will send back hi 
     
     #bad words remover
@@ -35,14 +35,20 @@ async def on_message(message):
         if message.content.count(word) > 0:
             await message.channel.purge(limit=1)
 
-    if message.content == "!help":
-        embed = discord.Embed(title="Help on BOT", description="Some user commands")
-        embed.add_field(name="!hello", value= "Greets the user")
-        embed.add_field(name="*search <topic>", value= "Shows top geeksgforgeeks results")
+    if message.content == "~help":
+        embed = discord.Embed(title="Bot Commands", description="Bot Commands Usage details")
+        embed.add_field(name="~hello", value= "Greets the user")
+        embed.add_field(name="~search <topic>", value= "Shows top geeksgforgeeks results from web")
+        embed.add_field(name="~events", value= "Shows live coding events along with their link")
+        embed.add_field(name="~tasks", value= "Shows assigned tasks in this club(can be used by anyone)")
+        embed.add_field(name="~tasks assign <domain name> <task details>", value= "Adds tasks to the task list(can only be used by admins)")
+        embed.add_field(name="~tasks delete <domain name> <task number>", value= "Deletes the specified task number from the task list(used only by admins)")
+        embed.add_field(name="~search <topic>", value= "Shows top geeksgforgeeks results from web")
+
         await message.channel.send(content=None, embed=embed)  
 
     # events scraping
-    if message.content == "!events":
+    if message.content == "~events":
         URL = "https://www.stopstalk.com/contests"
 
         r = requests.get(URL)
@@ -82,7 +88,7 @@ async def on_message(message):
     if message.content:
         x = message.content.split()
         arg = ""
-        if(x[0] == "*search"):
+        if(x[0] == "~search"):
             arg = x[1:]
             input_query=''.join(arg)
             count = 1
@@ -92,16 +98,18 @@ async def on_message(message):
                 for j in search(modified_query, tld="co.in", num=7, stop=7, pause=1):
                     embed.add_field(name=str(count)+").", value= j)
                     count+=1
-                await message.channel.send(content=None, embed=embed) 
-    
+            else:
+                embed.add_field(name="no query passed", value="use ~help for usage details")
+           
+            await message.channel.send(content=None, embed=embed) 
     # task tracker feature for members:
     if message.content:
        processed_msg=message.content.split()
        args=""
-       if(processed_msg[0]=="!tasks"):
+       if(processed_msg[0]=="~tasks"):
            #json template
            #fetch pre-exiting task from file
-           with open('./tasks.json') as tasks:
+           with open(Task_file) as tasks:
                task_list=json.load(tasks)
            args = x[1:]
            # just a workaround, will fix later
@@ -116,15 +124,15 @@ async def on_message(message):
                     task_list[args[1]]['tasks']=[" ".join(args[2:])]
 
                 #save file
-                with open('./tasks.json','w') as tf:
-                    json.dump(task_list,tf)
+                with open(Task_file,'w') as tf:
+                    json.dump(Task_list,tf)
                 embed=discord.Embed(title="New Task",description="details")
                 embed.add_field(name="Domain: ",value=args[1])
                 embed.add_field(name="Tasks: ",value=" ".join(args[2:]))
                 await message.channel.send(content=None,embed=embed)
            if (args[0]=="delete"):
                 #get tasklist from file
-                with open('./tasks.json') as tf:
+                with open(Task_file) as tf:
                     task_list=json.load(tf)
                 if(args[1] in task_list):
                     #args[2]: task number, args[1]: domain
@@ -134,7 +142,7 @@ async def on_message(message):
                     toBeDeleted=task_list[args[1]]['tasks'][int(args[2])-1]
                     task_list[args[1]]['tasks'].remove(toBeDeleted)
                     #save changes to file
-                    with open('./tasks.json','w') as tf:
+                    with open(Task_file,'w') as tf:
                         json.dump(task_list,tf)
                     await message.channel.send("task deleted successfully")
                 else:
@@ -142,7 +150,7 @@ async def on_message(message):
            else:
                embed=discord.Embed(title="Tasks",description="list of tasks:-")
                #print all the tasks from file
-               with open('./tasks.json') as tf:
+               with open(Task_file) as tf:
                    task_list=json.load(tf)
                for domain in task_list:
                    count=1
