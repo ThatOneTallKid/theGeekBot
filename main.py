@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 import json
 
 
-
+# loads the env file and assign the var
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
@@ -37,6 +37,7 @@ async def on_message(message):
         if message.content.count(word) > 0:
             await message.channel.purge(limit=1)
 
+    # help tab, lists all the commands
     if message.content == "--help":
         embed = discord.Embed(title="Help on BOT", description="Some user commands")
         embed.add_field(name="!hello", value= "Greets the user")
