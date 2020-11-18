@@ -28,7 +28,7 @@ async def on_ready():
     )
 @client.event   
 async def on_message(message):
-    bad_words  = [ "fuck" , "mf", "ass", "Ass", "FUCK", "bsdk", "madarchod", "bhenchd", "f_u_c_k", "vagina" , "penis", "breasts", "boobs","Boobs","mc" , "SALE"]
+    bad_words  = [ "fuck" , "mf","ass ", "FUCK", "bsdk", "madarchod", "bhenchd", "f_u_c_k", "vagina","bhosdiwale" ,"Fuck","bsd","asshole", "penis", "breasts", "boobs","Boobs","mc" , "SALE"]
     if message.content == "!hello":
         await message.channel.send("Hi!, nice to meet you. ") # If the user says !hello we will send back hi 
     
