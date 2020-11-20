@@ -11,6 +11,8 @@ from bs4 import BeautifulSoup
 import json
 import csv
 from profanityfilter import ProfanityFilter
+from discord.colour import Colour
+from discord.embeds import Embed
 
 # loads the env file and assign the var
 load_dotenv()
@@ -61,7 +63,7 @@ async def on_message(message):
     
     # help tab, lists all the commands
     if message.content == "--help":
-        embed = discord.Embed(title="Help on BOT", description="Some user commands")
+        embed = Embed(title="Help on BOT", description="Some user commands",colour=Colour(0xE5E242))
         embed.add_field(name="--hello", value= "Greets the user")
         embed.add_field(name="--search <topic>", value= "Shows top geeksgforgeeks results")
         embed.add_field(name="--events", value= "Info about upcoming coding contests")
