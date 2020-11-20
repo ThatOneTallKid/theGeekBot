@@ -44,6 +44,7 @@ print("define slangs [OK]")
 #TODO: do error handling here
 with open(Admin_file,'r') as adms:
     admin_list=json.load(adms)['admins']
+    print(admin_list)
 
 @client.event
 async def on_ready():
@@ -154,7 +155,7 @@ async def on_message(message):
                 #save file
                     with open(Task_file,'w') as tf:
                         json.dump(task_list,tf)
-                    embed=discord.Embed(title="New Task",description="details")
+                    embed=Embed(title="New Task",description="details",colour=Colour(0xFD0061))
                     embed.add_field(name="Domain: ",value=args[1])
                     embed.add_field(name="Tasks: ",value=" ".join(args[2:]))
                else:
