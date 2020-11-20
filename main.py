@@ -9,15 +9,39 @@ import html5lib
 from datetime import date
 from bs4 import BeautifulSoup
 import json
-
+import csv
+from profanityfilter import ProfanityFilter
 
 # loads the env file and assign the var
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 ID = os.getenv('DISCORD_ID')
+Task_file=os.getenv('TASK_FILE')
+Admin_file=os.getenv('ADMINS_LIST')
 
 client = discord.Client()
+
+pf1=ProfanityFilter() #for user defined slangs (just a workaround)
+pf2=ProfanityFilter() #for pre defined slangs
+#TODO: get desired slangs from file and pass it below
+
+Profane_file='./slangs.csv';
+slang_list=[]
+with open(Profane_file,'r') as pf:
+    slangs=csv.reader(pf)
+    for slang in slangs:
+        slang_list.append(slang[0]) # slang is [word], so slang[0] is word
+    print('profane list loaded [ok]')
+
+pf1.set_censor('*')    
+pf1.define_words(slang_list)
+print("define slangs [OK]")
+
+#getting admins
+#TODO: do error handling here
+with open(Admin_file,'r') as adms:
+    admin_list=json.load(adms)['admins']
 
 @client.event
 async def on_ready():
@@ -28,26 +52,27 @@ async def on_ready():
     )
 @client.event   
 async def on_message(message):
-    bad_words  = [ "fuck" , "mf","ass ", "FUCK", "bsdk", "madarchod", "bhenchd", "f_u_c_k", "vagina","bhosdiwale" ,"Fuck","bsd","asshole", "penis","lodu", "breasts", "boobs","Boobs","mc" , "SALE"]
-    valid_users = ["Aditya10#1960", "taran | KIIT #7416", "souvik#5891"]
-    if message.content == "!hello":
-        await message.channel.send("Hi!, nice to meet you. ") # If the user says !hello we will send back hi 
-    
-    #bad words remover
-    for word in bad_words:
-        if message.content.count(word) > 0:
-            await message.channel.purge(limit=1)
+    if message.content == "--hello":
+        await message.channel.send("Hi!, nice to meet you. ") # If the user says !hello we will send back hii 
 
+    #bad words remover
+    if pf1.is_profane(message.content) or pf2.is_profane(message.content):
+            await message.channel.purge(limit=1)
+    
     # help tab, lists all the commands
     if message.content == "--help":
         embed = discord.Embed(title="Help on BOT", description="Some user commands")
-        embed.add_field(name="!hello", value= "Greets the user")
-        embed.add_field(name="*search <topic>", value= "Shows top geeksgforgeeks results")
-        embed.add_field(name="!events", value= "Info about upcoming coding contests")
+        embed.add_field(name="--hello", value= "Greets the user")
+        embed.add_field(name="--search <topic>", value= "Shows top geeksgforgeeks results")
+        embed.add_field(name="--events", value= "Info about upcoming coding contests")
+        embed.add_field(name="--tasks", value= "Shows ongoing/assigned tasks")
+        embed.add_field(name="--tasks assign <domain> <task details>", value= "assigns task to a specific domain(only for admins)")
+        embed.add_field(name="--tasks delete <domain> <task number>", value= "deletes mentioned task number from task list")
+
         await message.channel.send(content=None, embed=embed)  
 
     # events scraping
-    if message.content == "!events":
+    if message.content == "--events":
         URL = "https://www.stopstalk.com/contests"
 
         r = requests.get(URL)
@@ -87,7 +112,7 @@ async def on_message(message):
     if message.content:
         x = message.content.split()
         arg = ""
-        if(x[0] == "*search"):
+        if(x[0] == "--search"):
             arg = x[1:]
             input_query=''.join(arg)
             count = 1
@@ -97,57 +122,64 @@ async def on_message(message):
                 for j in search(modified_query, tld="co.in", num=7, stop=7, pause=1):
                     embed.add_field(name=str(count)+").", value= j)
                     count+=1
-                await message.channel.send(content=None, embed=embed) 
+            else:
+                embed.add_field(name="Invalid usage",value="use --help to know detailed usage")
+           
+            await message.channel.send(content=None, embed=embed) 
     
     # task tracker feature for members:
     if message.content:
        processed_msg=message.content.split()
        args=""
-       if(processed_msg[0]=="!tasks"):
-           #json template
+
+       if(processed_msg[0]=="--tasks"):
            #fetch pre-exiting task from file
            with open('./tasks.json') as tasks:
                task_list=json.load(tasks)
            args = x[1:]
-           # just a workaround, will fix later
+           #TODO: just a workaround, will fix later
            if len(args)==0: args=[""]
            #check if 1st arg is `assign` or not
            
            if (args[0]=="assign"):
                 #if already exists
-               if str(message.author) in valid_users:
+               if str(message.author) in admin_list:
                     if(args[1] in task_list):
                         task_list[args[1]]['tasks'].append(" ".join(args[2:]))
                     else:
                         task_list[args[1]]={}
                         task_list[args[1]]['tasks']=[" ".join(args[2:])]
                 #save file
-                    with open('./tasks.json','w') as tf:
+                    with open(Task_file,'w') as tf:
                         json.dump(task_list,tf)
                     embed=discord.Embed(title="New Task",description="details")
                     embed.add_field(name="Domain: ",value=args[1])
                     embed.add_field(name="Tasks: ",value=" ".join(args[2:]))
-
+               else:
+                   await message.channel.send("Oops! Only admins can use this")
                     
-                    await message.channel.send(content=None,embed=embed)
+               await message.channel.send(content=None,embed=embed)
+           
            if (args[0]=="delete"):
                 #get tasklist from file
-                if(message.author) in valid_users:
-                    with open('./tasks.json') as tf:
+                if str(message.author) in admin_list:
+                    with open(Task_file) as tf:
                         task_list=json.load(tf)
                     if(args[1] in task_list):
                     #args[2]: task number, args[1]: domain
                         if int(args[2]) == 0:
                             await message.channel.send("invalid task "+args[2])
                             return
-                        toBeDeleted=task_list[args[1]]['tasks'][int(args[2])-1]
+                        toBeDeleted=task_list[args[1]]['tasks'][int(args[2])-1]#TODO: error handling over here(index out of range)
                         task_list[args[1]]['tasks'].remove(toBeDeleted)
                         #save changes to file
-                        with open('./tasks.json','w') as tf:
+                        with open(Task_file,'w') as tf:
                             json.dump(task_list,tf)
                         await message.channel.send("task deleted successfully")
                     else:
                         await message.channel.send("No tasks available for "+args[1])
+                else:
+                    await message.channel.send("Oops! only admins can use this command")
            else:
                embed=discord.Embed(title="Tasks",description="list of tasks:-")
                #print all the tasks from file
