@@ -22,6 +22,7 @@ ID = os.getenv('DISCORD_ID')
 Task_file=os.getenv('TASK_FILE')
 Admin_file=os.getenv('ADMINS_LIST')
 
+
 client = discord.Client()
 
 pf1=ProfanityFilter() #for user defined slangs (just a workaround)
