@@ -1,6 +1,9 @@
 <a name="title"></a>
 # 𝕋𝕙𝕖 𝔾𝔼𝔼𝕂 𝔹𝕆𝕋 🤖🤖
 
+![Banner](https://github.com/Sayak11/theGeekBot/blob/master/gfgpic_1.jpg)
+
+
 ```
 pip3 install ProfanityFilter
 ```
