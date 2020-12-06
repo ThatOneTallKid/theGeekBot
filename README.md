@@ -14,8 +14,8 @@
 
 <a name="about"></a>
 # 𝔸𝕓𝕠𝕦𝕥 -
-The Geek Bot is built from scratch and consists of a programmer's search feature that enables the users to search various programming concepts and returns the list of the top articles from the GeeksforGeeks website along with the links.It also has a feature that when called, returns the list of all ongoing coding events going along the world.We have also implemented a profanity filter that identifies bad words by any user and purges them.
-It is currently being used in our Discord server, and the bot has been very helpful to all the members.
+𝚃𝚑𝚎 𝙶𝚎𝚎𝚔 𝙱𝚘𝚝 𝚒𝚜 𝚋𝚞𝚒𝚕𝚝 𝚏𝚛𝚘𝚖 𝚜𝚌𝚛𝚊𝚝𝚌𝚑 𝚊𝚗𝚍 𝚌𝚘𝚗𝚜𝚒𝚜𝚝𝚜 𝚘𝚏 𝚊 𝚙𝚛𝚘𝚐𝚛𝚊𝚖𝚖𝚎𝚛'𝚜 𝚜𝚎𝚊𝚛𝚌𝚑 𝚏𝚎𝚊𝚝𝚞𝚛𝚎 𝚝𝚑𝚊𝚝 𝚎𝚗𝚊𝚋𝚕𝚎𝚜 𝚝𝚑𝚎 𝚞𝚜𝚎𝚛𝚜 𝚝𝚘 𝚜𝚎𝚊𝚛𝚌𝚑 𝚟𝚊𝚛𝚒𝚘𝚞𝚜 𝚙𝚛𝚘𝚐𝚛𝚊𝚖𝚖𝚒𝚗𝚐 𝚌𝚘𝚗𝚌𝚎𝚙𝚝𝚜 𝚊𝚗𝚍 𝚛𝚎𝚝𝚞𝚛𝚗𝚜 𝚝𝚑𝚎 𝚕𝚒𝚜𝚝 𝚘𝚏 𝚝𝚑𝚎 𝚝𝚘𝚙 𝚊𝚛𝚝𝚒𝚌𝚕𝚎𝚜 𝚏𝚛𝚘𝚖 𝚝𝚑𝚎 𝙶𝚎𝚎𝚔𝚜𝚏𝚘𝚛𝙶𝚎𝚎𝚔𝚜 𝚠𝚎𝚋𝚜𝚒𝚝𝚎 𝚊𝚕𝚘𝚗𝚐 𝚠𝚒𝚝𝚑 𝚝𝚑𝚎 𝚕𝚒𝚗𝚔𝚜.𝙸𝚝 𝚊𝚕𝚜𝚘 𝚑𝚊𝚜 𝚊 𝚏𝚎𝚊𝚝𝚞𝚛𝚎 𝚝𝚑𝚊𝚝 𝚠𝚑𝚎𝚗 𝚌𝚊𝚕𝚕𝚎𝚍, 𝚛𝚎𝚝𝚞𝚛𝚗𝚜 𝚝𝚑𝚎 𝚕𝚒𝚜𝚝 𝚘𝚏 𝚊𝚕𝚕 𝚘𝚗𝚐𝚘𝚒𝚗𝚐 𝚌𝚘𝚍𝚒𝚗𝚐 𝚎𝚟𝚎𝚗𝚝𝚜 𝚐𝚘𝚒𝚗𝚐 𝚊𝚕𝚘𝚗𝚐 𝚝𝚑𝚎 𝚠𝚘𝚛𝚕𝚍.𝚆𝚎 𝚑𝚊𝚟𝚎 𝚊𝚕𝚜𝚘 𝚒𝚖𝚙𝚕𝚎𝚖𝚎𝚗𝚝𝚎𝚍 𝚊 𝚙𝚛𝚘𝚏𝚊𝚗𝚒𝚝𝚢 𝚏𝚒𝚕𝚝𝚎𝚛 𝚝𝚑𝚊𝚝 𝚒𝚍𝚎𝚗𝚝𝚒𝚏𝚒𝚎𝚜 𝚋𝚊𝚍 𝚠𝚘𝚛𝚍𝚜 𝚋𝚢 𝚊𝚗𝚢 𝚞𝚜𝚎𝚛 𝚊𝚗𝚍 𝚙𝚞𝚛𝚐𝚎𝚜 𝚝𝚑𝚎𝚖.
+𝙸𝚝 𝚒𝚜 𝚌𝚞𝚛𝚛𝚎𝚗𝚝𝚕𝚢 𝚋𝚎𝚒𝚗𝚐 𝚞𝚜𝚎𝚍 𝚒𝚗 𝚘𝚞𝚛 𝙳𝚒𝚜𝚌𝚘𝚛𝚍 𝚜𝚎𝚛𝚟𝚎𝚛, 𝚊𝚗𝚍 𝚝𝚑𝚎 𝚋𝚘𝚝 𝚑𝚊𝚜 𝚋𝚎𝚎𝚗 𝚟𝚎𝚛𝚢 𝚑𝚎𝚕𝚙𝚏𝚞𝚕 𝚝𝚘 𝚊𝚕𝚕 𝚝𝚑𝚎 𝚖𝚎𝚖𝚋𝚎𝚛𝚜.
 
 <a name="tech"></a>
 # 𝕋𝕖𝕔𝕙 𝕌𝕤𝕖𝕕 - 
