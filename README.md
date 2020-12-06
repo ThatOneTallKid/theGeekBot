@@ -7,7 +7,7 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/ThatOneTallKid/theGeekBot)
 ![GitHub issues](https://img.shields.io/github/issues-raw/ThatOneTallKid/theGeekBot)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/ThatOneTallKid/theGeekBot)
-![GitHub](https://img.shields.io/github/license/ThatOneTallKid/theGeekBot)
+![GitHub](https://img.shields.io/github/license/Sayak11/theGeekBot)
 [![Star on GitHub](https://img.shields.io/github/stars/ThatOneTallKid/theGeekBot.svg?style=social)](https://github.com/all-contributors/all-contributors/stargazers)
  [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 
