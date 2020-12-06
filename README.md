@@ -79,7 +79,7 @@
 # ℂ𝕠𝕟𝕥𝕣𝕚𝕓𝕦𝕥𝕠𝕣𝕤 -
 1.) [Aditya Das](https://github.com/ThatOneTallKid)  
 2.) [Souvik](https://github.com/DarthCucumber)  
-3.) [Akash](https://github.com/ad285)  
+3.) [ad258](https://github.com/ad285)  
 
 [Back to Start](#title)
 
