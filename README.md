@@ -52,8 +52,7 @@ Create text channel for logs.
 Create roles `Admins` and `Moderators`.
 
 Clone repository and install package dependencies.
-```sh
-git clone https://github.com/ThatOneTallKid/theGeekBot.git
+```git clone https://github.com/ThatOneTallKid/theGeekBot.git
 cd theGeekBot```
 
 
