@@ -9,7 +9,7 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/ThatOneTallKid/theGeekBot)
 ![GitHub](https://img.shields.io/github/license/Sayak11/theGeekBot)
 [![Star on GitHub](https://img.shields.io/github/stars/ThatOneTallKid/theGeekBot.svg?style=social)](https://github.com/all-contributors/all-contributors/stargazers)
- [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+ [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 
 
 <a name="about"></a>
@@ -69,7 +69,7 @@
 - [Table of contents.](#contents)
 - [License.](#license)
 - [Contributers.](#contributors)
-
+ 
 
 <a name="license"></a>
 # 𝕃𝕚𝕔𝕖𝕟𝕤𝕖 -
@@ -79,7 +79,6 @@
 # ℂ𝕠𝕟𝕥𝕣𝕚𝕓𝕦𝕥𝕠𝕣𝕤 -
 1.) [Aditya Das](https://github.com/ThatOneTallKid)  
 2.) [Souvik](https://github.com/DarthCucumber)  
-3.) [ad258](https://github.com/ad285)  
 
 [Back to Start](#title)
 
@@ -89,4 +88,4 @@
 
 
 
-
+ 
