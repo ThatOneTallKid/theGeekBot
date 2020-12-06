@@ -45,13 +45,13 @@
 
 <a name="setup"></a>
 # 𝕊𝕖𝕥𝕥𝕚𝕟𝕘 𝕌𝕡 𝔻𝕚𝕤𝕔𝕠𝕣𝕕 -
-Create server in Discord.
+𝙲𝚛𝚎𝚊𝚝𝚎 𝚜𝚎𝚛𝚟𝚎𝚛 𝚒𝚗 𝙳𝚒𝚜𝚌𝚘𝚛𝚍.
 
-Create text channel for logs.
+𝙲𝚛𝚎𝚊𝚝𝚎 𝚝𝚎𝚡𝚝 𝚌𝚑𝚊𝚗𝚗𝚎𝚕 𝚏𝚘𝚛 𝚕𝚘𝚐𝚜.
 
-Create roles `Admins` and `Moderators`.
+𝙲𝚛𝚎𝚊𝚝𝚎 𝚛𝚘𝚕𝚎𝚜 `𝙰𝚍𝚖𝚒𝚗𝚜` 𝚊𝚗𝚍 `𝙼𝚘𝚍𝚎𝚛𝚊𝚝𝚘𝚛𝚜`.
 
-Clone repository and install package dependencies.
+𝙲𝚕𝚘𝚗𝚎 𝚛𝚎𝚙𝚘𝚜𝚒𝚝𝚘𝚛𝚢 𝚊𝚗𝚍 𝚒𝚗𝚜𝚝𝚊𝚕𝚕 𝚙𝚊𝚌𝚔𝚊𝚐𝚎 𝚍𝚎𝚙𝚎𝚗𝚍𝚎𝚗𝚌𝚒𝚎𝚜.
 
 ```git clone https://github.com/ThatOneTallKid/theGeekBot.git```
 
@@ -73,7 +73,7 @@ Clone repository and install package dependencies.
 
 <a name="license"></a>
 # 𝕃𝕚𝕔𝕖𝕟𝕤𝕖 -
-This project is under [GNU General Public License v3.0](https://github.com/Sayak11/theGeekBot/blob/add-license-1/LICENSE).
+𝚃𝚑𝚒𝚜 𝚙𝚛𝚘𝚓𝚎𝚌𝚝 𝚒𝚜 𝚞𝚗𝚍𝚎𝚛 [GNU General Public License v3.0 License](https://github.com/Sayak11/theGeekBot/blob/add-license-1/LICENSE).
 
 <a name="contributors"></a>
 # ℂ𝕠𝕟𝕥𝕣𝕚𝕓𝕦𝕥𝕠𝕣𝕤 -
