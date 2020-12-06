@@ -19,8 +19,7 @@ It is currently being used in our Discord server, and the bot has been very help
 
 <a name="tech"></a>
 # 𝕋𝕖𝕔𝕙 𝕌𝕤𝕖𝕕
-
-<i class='icon-tech-python'></i>
+<IconLine icons=['python'] />
 <i class='icon-tech-javascript'></i>
 <i class='icon-tech-discord-rewrite'></i>
 
