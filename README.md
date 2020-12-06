@@ -43,7 +43,7 @@ It is currently being used in our Discord server, and the bot has been very help
 
 ```--tasks delete[domain][task number]``` - 𝙳𝚎𝚕𝚎𝚝𝚎𝚜 𝚖𝚎𝚗𝚝𝚒𝚘𝚗𝚎𝚍 𝚝𝚊𝚜𝚔 𝚗𝚞𝚖𝚋𝚎𝚛 𝚏𝚛𝚘𝚖 𝚝𝚑𝚎 𝚝𝚊𝚜𝚔 𝚕𝚒𝚜𝚝
 
-<a name="setup1"></a>
+<a name="setup"></a>
 # 𝕊𝕖𝕥𝕥𝕚𝕟𝕘 𝕌𝕡 𝔻𝕚𝕤𝕔𝕠𝕣𝕕 -
 Create server in Discord.
 
@@ -56,6 +56,38 @@ Clone repository and install package dependencies.
 ```git clone https://github.com/ThatOneTallKid/theGeekBot.git```
 
 ```cd theGeekBot```
+
+<a name="contents"></a>
+# 𝕋𝕒𝕓𝕝𝕖 𝕠𝕗 𝕔𝕠𝕟𝕥𝕖𝕟𝕥𝕤 -
+
+- [Description. ](#title)
+- [About.](#about)
+- [Tech Used.](#tech)
+- [Commands.](#cmd)
+- [Admin Commands.](#adcmd)
+- [Setup.](#setup)
+- [Table of contents.](#contents)
+- [License.](#license)
+- [Contributers.](#contributors)
+
+
+<a name="license"></a>
+# 𝕃𝕚𝕔𝕖𝕟𝕤𝕖 -
+This project is under [GNU General Public License v3.0](https://github.com/Sayak11/theGeekBot/blob/add-license-1/LICENSE).
+
+<a name="contributors"></a>
+# ℂ𝕠𝕟𝕥𝕣𝕚𝕓𝕦𝕥𝕠𝕣𝕤 -
+1.) [Aditya Das](https://github.com/ThatOneTallKid)  
+2.) [Souvik](https://github.com/DarthCucumber)  
+3.) [Akash](https://github.com/ad285)  
+4.) [Sayak Roy Chowdhury](https://github.com/Sayak11)
+
+[Back to Start](#title)
+
+# 𝔸 𝔾𝔽𝔾 𝕂𝕀𝕀𝕋 ℙ𝕣𝕠𝕛𝕖𝕔𝕥  
+![Banner](https://github.com/Sayak11/theGeekBot/blob/master/gfgicon.png)  
+
+
 
 
 
