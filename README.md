@@ -9,7 +9,7 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/ThatOneTallKid/theGeekBot)
 ![GitHub](https://img.shields.io/github/license/Sayak11/theGeekBot)
 [![Star on GitHub](https://img.shields.io/github/stars/ThatOneTallKid/theGeekBot.svg?style=social)](https://github.com/all-contributors/all-contributors/stargazers)
- [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+ [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 
 
 <a name="about"></a>
@@ -80,7 +80,6 @@ This project is under [GNU General Public License v3.0](https://github.com/Sayak
 1.) [Aditya Das](https://github.com/ThatOneTallKid)  
 2.) [Souvik](https://github.com/DarthCucumber)  
 3.) [Akash](https://github.com/ad285)  
-4.) [Sayak Roy Chowdhury](https://github.com/Sayak11)
 
 [Back to Start](#title)
 
