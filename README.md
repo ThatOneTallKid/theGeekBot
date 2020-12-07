@@ -78,7 +78,7 @@
 <a name="contributors"></a>
 # ℂ𝕠𝕟𝕥𝕣𝕚𝕓𝕦𝕥𝕠𝕣𝕤 -
 1.) [Aditya Das](https://github.com/ThatOneTallKid)  
-2.) [Souvik](https://github.com/DarthCucumber) 
+2.) [Souvik](https://github.com/DarthCucumber)  
 3.) [Piyush Pandey](https://github.com/piyushpandey2000)
 
 [Back to Start](#title)
